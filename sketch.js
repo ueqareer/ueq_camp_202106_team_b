@@ -92,8 +92,12 @@ function showData(pos) {
       eyeCount++;
     }else{
       console.log("-----------------10秒間に目を" + eyeCount + "回瞑りました。-----------------");
+
+      beforeCount = eyeCount;
+
       eyeCount = 0;
       timerFlg = true;
+      
     }
     // console.log("目を瞑りました" + eyeCount);
     f = 0;
@@ -110,9 +114,3 @@ function showData(pos) {
   // console.log(f);
   
 }
-
-
-// setInterval("averageCount", 10000, eyeCount);
-
-
-
