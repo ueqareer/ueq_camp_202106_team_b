@@ -10,10 +10,10 @@ public class RandomMove : MonoBehaviour
     public Transform central;
     public GameObject childframe;
     public GameObject childphrase;
-    public GameObject Unitychan;
-    public GameObject Tokochan;
-    public GameObject Marinechan;
+    public GameObject megb;
+    public GameObject nextgb;
     public AudioClip audioclip;
+    public AnimationClip[] faceanimations;
 
     private AudioSource audiosource;
     private bool isGUI = true;
@@ -88,19 +88,25 @@ public class RandomMove : MonoBehaviour
         {
             childframe.SetActive(false);
         }
+        if(updtime > 5)
+        {
+            anim.CrossFade(faceanimations[2].name, 0);
+        }
 
     }
     private void OnGUI()
     {
         if (isGUI)
         {
-            GUI.Box(new Rect(Screen.width - 110, 10, 100, 90), "Motion");
+            GUI.Box(new Rect(Screen.width - 110, 10, 100, 120), "Motion");
             if (GUI.Button(new Rect(Screen.width - 100, 40, 80, 20), "homeru"))
             {
                 anim.SetTrigger("jump");
                 text.text = "Ç™ÇÒÇŒÇ¡ÇΩÇÀÅI";
+                anim.CrossFade(faceanimations[0].name, 0);
                 audiosource.clip = audioclip;
                 audiosource.Play();
+                updtime = 0;
                 childframe.SetActive(true);
                 frameActiveTime = 0;
 
@@ -111,25 +117,33 @@ public class RandomMove : MonoBehaviour
                 rotation = Quaternion.LookRotation(direction - transform.position, Vector3.up);
                 agent.destination = pos;
             }
-            if(GUI.Button(new Rect(Screen.width - 100, 70, 80, 20), "changeModel"))
+            if (GUI.Button(new Rect(Screen.width - 100, 70, 80, 20), "homeru"))
             {
-                if(charnum%3 == 0)
-                {
-                    Tokochan.SetActive(true);
-                    Unitychan.SetActive(false);
-                }
-                else if(charnum%3 == 1)
-                {
-                    Marinechan.SetActive(true);
-                    Tokochan.SetActive(false);
-                }
-                else
-                {
-                    Unitychan.SetActive(true);
-                    Marinechan.SetActive(false);
-                }
-                charnum++;
+                anim.SetTrigger("scold");
+                text.text = "Ç±ÇÁÅI";
+                anim.CrossFade(faceanimations[1].name, 0);
+                audiosource.clip = audioclip;
+                audiosource.Play();
+                updtime = 0;
+                childframe.SetActive(true);
+                frameActiveTime = 0;
+
+                agent.isStopped = false;
+                pos = central.position;
+                pos.z = 2.0f;
+                Vector3 direction = new Vector3(pos.x, transform.position.y, pos.z);
+                rotation = Quaternion.LookRotation(direction - transform.position, Vector3.up);
+                agent.destination = pos;
+            }
+            if (GUI.Button(new Rect(Screen.width - 100, 100, 80, 20), "changeModel"))
+            {
+                nextgb.SetActive(true);
+                megb.SetActive(false);
             }
         }
+    }
+    public void Test()
+    {
+        anim.SetTrigger("jump");
     }
 }
