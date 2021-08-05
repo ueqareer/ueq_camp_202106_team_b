@@ -94,10 +94,10 @@ public class RandomMove : MonoBehaviour
         }
 
     }
-    private void OnGUI()
+   private void OnGUI()
     {
         if (isGUI)
-        {
+        {/*
             GUI.Box(new Rect(Screen.width - 110, 10, 100, 120), "Motion");
             if (GUI.Button(new Rect(Screen.width - 100, 40, 80, 20), "homeru"))
             {
@@ -139,11 +139,49 @@ public class RandomMove : MonoBehaviour
             {
                 nextgb.SetActive(true);
                 megb.SetActive(false);
-            }
+            }*/
         }
     }
-    public void Test()
+
+    public void compliment()
     {
         anim.SetTrigger("jump");
+        text.text = "Ç™ÇÒÇŒÇ¡ÇΩÇÀÅI";
+        anim.CrossFade(faceanimations[0].name, 0);
+        audiosource.clip = audioclip;
+        audiosource.Play();
+        updtime = 0;
+        childframe.SetActive(true);
+        frameActiveTime = 0;
+
+        agent.isStopped = false;
+        pos = central.position;
+        pos.z = 2.0f;
+        Vector3 direction = new Vector3(pos.x, transform.position.y, pos.z);
+        rotation = Quaternion.LookRotation(direction - transform.position, Vector3.up);
+        agent.destination = pos;
+    }
+    public void scold()
+    {
+        anim.SetTrigger("scold");
+        text.text = "Ç±ÇÁÅI";
+        anim.CrossFade(faceanimations[1].name, 0);
+        audiosource.clip = audioclip;
+        audiosource.Play();
+        updtime = 0;
+        childframe.SetActive(true);
+        frameActiveTime = 0;
+
+        agent.isStopped = false;
+        pos = central.position;
+        pos.z = 2.0f;
+        Vector3 direction = new Vector3(pos.x, transform.position.y, pos.z);
+        rotation = Quaternion.LookRotation(direction - transform.position, Vector3.up);
+        agent.destination = pos;
+    }
+    public void changeCharacter()
+    {
+        nextgb.SetActive(true);
+        megb.SetActive(false);
     }
 }
