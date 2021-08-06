@@ -5,8 +5,7 @@ var len = 0;
 var position_37_x = 0;
 var position_37_y = 0;
 var f = 0;
-var eyeCount = 0;
-let timerFlg = true;
+//var eyeCount = 0;
 
 
 // getUserMedia によるカメラ映像の取得
@@ -88,17 +87,14 @@ function showData(pos) {
   var bool_y = amountOfChange - Math.abs(position_37_y - pos[37][1]);
   if (bool_x > 0.5 && bool_y > 0.5 && f >= 30) {
     //瞬き回数判定
-    if(timerFlg){
-      eyeCount++;
-    }else{
-      console.log("-----------------10秒間に目を" + eyeCount + "回瞑りました。-----------------");
+    eyeCount++;
 
-      beforeCount = eyeCount;
+    //console.log("-----------------1分間に目を" + eyeCount + "回瞑りました。-----------------");
 
-      eyeCount = 0;
-      timerFlg = true;
-      
-    }
+    //beforeCount = eyeCount;
+
+    // eyeCount = 0;
+
     // console.log("目を瞑りました" + eyeCount);
     f = 0;
   } else {
