@@ -2,8 +2,8 @@
   <div class="home">
     <div class="home__content">
       <h1>タイトル</h1>
-      <p>今日も頑張りましょう!!!!!</p>
-      <the-button class="home__button" to="result" description="START"></the-button>
+      <h3>今日も頑張りましょう!!!!!</h3>
+      <the-button to="https://ueq-project.web.app/result/" description="START" class="home__button"></the-button>
     </div>
     <div class="home__background">
       <img src="../assets/Unitychan6.png" width="400" height="680" alt=""/>
@@ -16,6 +16,7 @@
 <script>
 // @ is an alias to /src
 import TheButton from "@/components/TheButton";
+
 export default {
   name: 'Home',
   components: {
@@ -24,38 +25,38 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.home{
+.home {
   width: 100vw;
   height: 100vh;
 
-  &__content{
+  &__content {
     width: 100%;
     height: 100%;
     position: fixed;
-    top:0;
+    top: 0;
     z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: #7F74FC;
   }
 
-  &__background{
+  &__background {
     width: 100%;
     height: 100%;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      position: fixed;
-      top:0;
-      z-index: -1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    z-index: -1;
 
 
-
-      img{
-        opacity: 0.5;
-      }
+    img {
+      opacity: 0.2;
+    }
   }
 }
 

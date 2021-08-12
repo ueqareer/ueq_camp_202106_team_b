@@ -10,10 +10,16 @@ yarn install
 yarn serve
 ```
 
-### Compiles and minifies for production
+### Compiles and minifies for production for windows
 ```
-yarn build
+yarn build; cp -r  result/ dist/; firebase deploy;
 ```
+```
+firebase deploy
+```
+
+### Deploy to firebase
+
 
 ### Lints and fixes files
 ```

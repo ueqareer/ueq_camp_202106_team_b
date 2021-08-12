@@ -1,30 +1,34 @@
 <template>
   <div class="button">
-    <router-link :to=to>{{description}}</router-link>
+    <a :href="to">{{description}}</a>
   </div>
 </template>
 
 <script>
 export default {
   name: "TheButton",
-  props:['to','description']
+  props: ['to', 'description'],
 }
 </script>
 
 <style lang="scss" scoped>
-.button{
+.button {
   width: 150px;
   height: 50px;
-  background: rgba(35, 31, 32, 0.76);
+  background: rgb(35, 31, 32);
+  opacity:0.3;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  a{
+  &:hover{
+    opacity : 1;
+    transition: opacity 0.5s ease;
+  }
+  a {
     text-decoration: none;
-    color : white;
+    color: white;
     font-weight: bold;
   }
-
 
 }
 </style>
