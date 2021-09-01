@@ -6,8 +6,29 @@
     <title>Unity WebGL Player | UEQ_sample</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
+    <style>
+      /* video 要素の上に canvas 要素をオーバーレイするための CSS */
+      #container {              /* コンテナ用の div について */
+        position: relative;     /* 座標指定を相対値指定にする */
+      }
+      #video {                  /* カメラ映像を流す video について */
+        transform: scaleX(-1);  /* 左右反転させる */
+      }
+      #canvas {                 /* 描画用の canvas について */
+        transform: scaleX(-1);  /* 左右反転させる */
+        position: absolute;     /* 座標指定を絶対値指定にして */
+        left: 0;                /* X座標を0に */
+        top: 0;                 /* Y座標を0に */
+      }
+    </style>
   </head>
-  <body>
+  <body　onContextmenu = "">
+      <div id="container">  <!-- video の上に canvas をオーバーレイするための div 要素 -->
+        <video id="video" width="400" height="300" autoplay></video>  <!-- カメラ映像を流す video -->
+        <canvas id="canvas" width="400" height="300"></canvas>        <!-- 重ねて描画する canvas -->
+      </div>
+      <div id="dat"></div>  <!-- データ表示用 div 要素 -->
+
       <div style="text-align:center">
           <button type="button" onclick="unityInstance.SendMessage('SD_unitychan_humanoid', 'compliment')">compliment</button>
           <button type="button" onclick="unityInstance.SendMessage('SD_unitychan_humanoid', 'scold')">scold</button>
@@ -89,5 +110,9 @@
           };
           document.body.appendChild(script);
       </script>
+      <script src="face_script/clmtrackr.js"></script>          <!-- clmtrackr のメインライブラリの読み込み -->
+      <script src="face_script/model_pca_20_svm.js"></script>   <!-- 顔モデル（※）の読み込み -->
+      <script src="face_script/sketch.js"></script>
+      <script src="face_script/count.js"></script>
   </body>
 </html>
