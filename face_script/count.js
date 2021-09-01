@@ -13,7 +13,11 @@ function hogemoge() {
 
   var value = localStorage.getItem('average');
   console.log("差分 = " + (value　- eyeCount));
-  
+  console.log("value = " + value);
+  if(value-eyeCount < -10){
+    // unityInstance.SendMessage('SD_unitychan_humanoid', 'compliment')
+    unityInstance.SendMessage('SD_unitychan_humanoid', 'scold');
+  }
   //データの蓄積
   countArray.push(eyeCount);
 
@@ -42,4 +46,4 @@ function hogemoge() {
 // setInterval(hogemoge(),3000);
 
 //1分毎にhogemoge関数を呼び出す
-setInterval("hogemoge()", 300000);
+setInterval("hogemoge()", 60000);
