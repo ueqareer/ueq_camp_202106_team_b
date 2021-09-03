@@ -1,9 +1,9 @@
 <template>
   <div class="home">
     <div class="home__content">
-      <h1>タイトル</h1>
+      <h1>集中監視ちゃん</h1>
       <h3>今日も頑張りましょう!!!!!</h3>
-      <the-button to="https://ueq-project.web.app/result/" description="START" class="home__button"></the-button>
+      <the-button to="https://ueq-project.web.app/start/" description="START" class="home__button"></the-button>
     </div>
     <div class="home__background">
       <img src="../assets/Unitychan6.png" width="400" height="680" alt=""/>
