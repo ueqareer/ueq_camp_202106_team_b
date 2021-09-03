@@ -59,7 +59,9 @@ drawLoop();
 // var averageCount = function (average) {
 //   console.log("10秒間の平均値 = " + average);
 // }
-
+function distance(x1,y1,x2,y2){
+  return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+}
 
 // 顔部品（特徴点）の位置データを表示する showData 関数
 function showData(pos) {
@@ -86,7 +88,7 @@ function showData(pos) {
 
   var bool_x = amountOfChange - Math.abs(position_37_x - pos[37][0]);
   var bool_y = amountOfChange - Math.abs(position_37_y - pos[37][1]);
-  if (bool_x > 0.5 && bool_y > 0.5 && f >= 30) {
+  if (bool_x > 0.2 && bool_y > 0.2 && f >= 30) {
     //瞬き回数判定
     if(timerFlg){
       eyeCount++;
@@ -95,7 +97,7 @@ function showData(pos) {
       eyeCount = 0;
       timerFlg = true;
     }
-    // console.log("目を瞑りました" + eyeCount);
+    console.log("目を瞑りました" + eyeCount);
     f = 0;
   } else {
     // console.log("目を瞑ってません");
@@ -105,7 +107,7 @@ function showData(pos) {
   position_37_y = Math.round(pos[37][1]);
 
   var dat = document.getElementById("dat");             // データ表示用div要素の取得
-  dat.innerHTML = str;                                  // データ文字列の表示
+  // dat.innerHTML = str;                                  // データ文字列の表示
   f += 1;
   // console.log(f);
   

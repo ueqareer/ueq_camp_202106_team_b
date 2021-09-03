@@ -4,16 +4,28 @@ var countArray = new Array();
 var totaleCount;
 var average;
 var intervalCount = 1;
+var first = true
 
 function hogemoge() {
+  if(first == true){
+    localStorage.setItem('totale', 0);
+    localStorage.setItem('average', 0);  
+    console.log("first")
+    first = false
+  }else{
+    console.log("差分 = " + (Math.ceil(localStorage.getItem('average'))　- eyeCount));
+    console.log("value = " + localStorage.getItem('average'));
+    if(Math.ceil(localStorage.getItem('average'))-eyeCount < -8){
+      // unityInstance.SendMessage('SD_unitychan_humanoid', 'compliment')
+      unityInstance.SendMessage('SD_unitychan_humanoid', 'scold');
+      eyeCount = 0;
+      return
+    }
+  }
   //totaleTime += 60;
-  //console.log("--------------------現在のトータル時間は" + totaleTime + "です.--------------------");
   console.log("1分経過");
   console.log("-----------------1分間に目を" + eyeCount + "回瞑りました。-----------------");
 
-  var value = localStorage.getItem('average');
-  console.log("差分 = " + (value　- eyeCount));
-  
   //データの蓄積
   countArray.push(eyeCount);
 
@@ -42,4 +54,4 @@ function hogemoge() {
 // setInterval(hogemoge(),3000);
 
 //1分毎にhogemoge関数を呼び出す
-setInterval("hogemoge()", 300000);
+setInterval("hogemoge()", 60000);
