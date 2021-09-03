@@ -12,7 +12,8 @@ public class RandomMove : MonoBehaviour
     public GameObject childphrase;
     public GameObject megb;
     public GameObject nextgb;
-    public AudioClip audioclip;
+    public AudioClip audioclip1;
+    public AudioClip audioclip2;
     public AnimationClip[] faceanimations;
 
     private AudioSource audiosource;
@@ -148,8 +149,8 @@ public class RandomMove : MonoBehaviour
         anim.SetTrigger("jump");
         text.text = "Ç™ÇÒÇŒÇ¡ÇΩÇÀÅI";
         anim.CrossFade(faceanimations[0].name, 0);
-        //audiosource.clip = audioclip;
-        //audiosource.Play();
+        audiosource.clip = audioclip1;
+        audiosource.Play();
         updtime = 0;
         childframe.SetActive(true);
         frameActiveTime = 0;
@@ -166,8 +167,8 @@ public class RandomMove : MonoBehaviour
         anim.SetTrigger("scold");
         text.text = "Ç±ÇÁÅI";
         anim.CrossFade(faceanimations[1].name, 0);
-        //audiosource.clip = audioclip;
-        //audiosource.Play();
+        audiosource.clip = audioclip2;
+        audiosource.Play();
         updtime = 0;
         childframe.SetActive(true);
         frameActiveTime = 0;
